@@ -27,19 +27,19 @@ Apple stock data from Jan 2020 --- Dec 2020
 
 ## Data Modification
 
-```
-Weekly Price change is calculated by computing the difference between Closing and Opening price. 
-```
+Weekly Price change is calculated by computing the rolling difference between Closing and Opening price for a week. 
 
-df['price_change_in_day'] = df['Close'] - df['Open']
-df['Weekly_change'] =  df.price_change_by_day.rolling(window=5,min_periods=0).mean() 
-df['abs_price_change_in_day'] = 
+Split the weekly change on its deviation from mean using standard deviation 
+```
+df['Weekly_change'] =  df['Close'] - df['Open'].rolling(window=5,min_periods=0).mean() 
 
 df['Weekly_significance_change'] =  abs(df['Weekly_change'] - df['Weekly_change'].mean())/df['Weekly_change'].std()
 
-df['diff'] =  df['Weekly_change'] - (abs(df['Close'] - df['Open']))
+```
 
-bins= [0,1,2]
+'Average' standard deviation indicates that the values tend to be close to the mean (also called the expected value) of the set, while a 'High' standard deviation indicates that the values are spread out over a wider range.
+
+```
 
 Weekly_Change = ['Average',  'High'  ]
 
@@ -47,27 +47,12 @@ bins= [0,1,2]
 
 df['Weekly_significance_change_Range'] = pd.cut(df['Weekly_significance_change'], bins, labels=Weekly_Change)
 
-df['Weekly_significance_change_Range'].value_counts().plot(kind='bar')
-
-df = df.replace(['Tuesday', 'Wednesday', 'Friday', 'Thursday'], 'Other')
-
-## Score
-
-![image](cloud.png)
-
-df['diff'] =  df['Weekly_change'] - df['abs_price_change_in_day']
-Z and P-score for  Monday  is   (-60.4437, 0.0)
-Z and P-score for  Tuesday  is   (-67.0868, 0.0)
-Z and P-score for  Wednesday  is   (-46.9289, 0.0)
-Z and P-score for  Thursday  is   (-47.3586, 0.0)
-Z and P-score for  Friday  is   (-56.9874, 0.0)
+```
+![image](Average_high.png)
+![image](Average_high1.png)
 
 
 
-## Data modication 
-
-Weekly changes 
+## Anova
 
 
-
-sns.boxplot(x="day_of_the_week", y="price_change_in_day", hue="Weekly_significance_change_Range", data=df, palette="Set3")
