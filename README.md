@@ -73,11 +73,19 @@ df['Weekly_significance_change_Range'] = pd.cut(df['Weekly_significance_change']
 The monday effect is difference	in price change in monday compared to other days. So we will club the all other days [Tue,wed,Thur,Fri] as 'other'. I will use the two-way anova with tukey.
 
 ```
-	group1			group2				Diff		Lower		Upper		q-value		p-value
+							sum_sq		df	F		PR(>F)
+C(day_of_the_week)					3.106191	1.0	2.355117	0.126253
+C(Weekly_significance_change_Range)			12.258975	1.0	9.294768	0.002568
+C(day_of_the_week):C(Weekly_significance_change_Range)	1.147157	1.0	0.869776	0.352000
+Residual						302.030700	229.0	NaN	NaN
+
+
+
+	group1		group2			Diff		Lower		Upper		q-value		p-value
 0	(Monday, High)	(Monday, Average)	0.886508	-0.095614	1.868631	3.303818	0.092854
-1	(Monday, High)	(Other, High)	    0.597785	-0.375504	1.571075	2.248031	0.387659
+1	(Monday, High)	(Other, High)		0.597785	-0.375504	1.571075	2.248031	0.387659
 2	(Monday, High)	(Other, Average)	1.075192	0.217165	1.933220	4.586527	0.007380
-3	(Monday, Average) 	(Other, High)	0.288723	-0.454714	1.032159	1.421464	0.721540
+3	(Monday, Average)	(Other, High)	0.288723	-0.454714	1.032159	1.421464	0.721540
 4	(Monday, Average)(Other, Average)	0.188684	-0.395796	0.773164	1.181585	0.816521
 5	(Other, High)	(Other, Average)	0.477407	-0.092106	1.046920	3.068204	0.134779
 ```
