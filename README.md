@@ -20,7 +20,7 @@ Apple stock data from Jan 2020 --- Dec 2020
 Features: Date,Open	,High,Low,Close,Adj,Close and Volume
 
 ```
-Date	Open	High	Low	Close	Adj Close	Volume
+Date	Open		High		Low		Close		Adj 		Close		Volume
 0	2019-12-06	66.870003	67.750000	66.824997	67.677498	66.553131	106075600
 1	2019-12-09	67.500000	67.699997	66.227501	66.730003	65.621384	128042400
 2	2019-12-10	67.150002	67.517502	66.464996	67.120003	66.004898	90420400
