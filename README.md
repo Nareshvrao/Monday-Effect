@@ -14,15 +14,18 @@ Z score: (also called a standard score) gives you an idea of how far from the me
 
 ## Data
 Apple stock data from Jan 2020 --- Dec 2020 
+
+Features 
+
 ...
-. Date
-. Open	
-. High	
-. Low	
-. Close	
-. Adj 
-. Close	
-. Volume
+Date
+Open	
+High	
+Low	
+Close	
+Adj 
+Close	
+Volume
 ...
 
 ## Data Modification
